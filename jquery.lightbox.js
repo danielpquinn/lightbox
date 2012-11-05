@@ -15,13 +15,13 @@
         if (!data) {
           // Initialize
           var $lightboxContent = $this.find('.lightbox-content').clone(), // Find lightbox content
-            $overlay = $('<div/>').addClass('lightbox-overlay'),
-            $close = $('<div/>').addClass('lightbox-close'); // Overlay...
+            $overlay = $('<div/>').addClass('lightbox-overlay'),          // Overlay
+            $close = $('<div/>').addClass('lightbox-close');              // Close button
 
           // Get rid of lightbox content in dom
           $this.find('.lightbox-content').remove();
 
-          $close.html('<a href="#" class="lightbox-clos">close</a>');
+          $close.html('<a href="#">close</a>');
 
           $lightboxContent.prepend($close);
 
@@ -56,10 +56,12 @@
           });
 
           $this.data('lightbox').overlay.bind('click', function (e) {
+	          e.preventDefault();
             $this.lightbox('close');
           });
 
           $this.data('lightbox').close.bind('click', function (e) {
+	          e.preventDefault();
             $this.lightbox('close');
           });
         }
